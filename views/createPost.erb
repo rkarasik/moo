@@ -1,0 +1,17 @@
+<form method="POST" action="/createPost">
+  <label for="post">Your Post</label>
+  <input type="text" name="[user]post">
+  <input type="submit">
+</form>
+
+<%= @user.email if @user %>
+
+<!-- create the form that makes the post
+create the route that actually makes the post
+AND then figure out how to associate it with a user -->
+
+<!-- @post = post.new params :post
+@User.post returns that user's posts
+each do 
+post 
+would run a loop -->
