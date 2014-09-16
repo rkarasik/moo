@@ -53,17 +53,28 @@ end
 
 post '/signup' do
 	puts params.inspect
-	@user = User.create(params[:user])
+	@user = User.new(params[:user])
+	if @user.save
+		flash[:notice] = "blah"
+	end	
 end 
 
 get '/createPost' do
-	params.inspect
 	erb :createPost
 end
 
 post '/createPost' do
 	@user = User.find(session[:user_id])
-	puts params.inspect
-	@user_post = Post.create(params[:post])
+	@user_post = Post.new(params[:post])
+
 	@user_post.user_id = @user_post.id
+	if @user_post.save
+		flash[:notice] = "YES"
+	end	
+	redirect '/display'
 end 
+
+get '/display' do
+	@posts = Post.where(user_id: current_user.id)
+	erb :display
+end	

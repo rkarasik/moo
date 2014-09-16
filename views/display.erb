@@ -1,0 +1,8 @@
+Hello friend. This is your display.
+<%= current_user.id %>
+
+<% @posts.each do |post| %>
+	<%= post.text %>
+	<br>
+	<br>
+	<% end %>
